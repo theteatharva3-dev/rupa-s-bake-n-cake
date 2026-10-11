@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sweet Treats Cake Bakery</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #fff8f0;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: #d9716b;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      width: 100%;
+      background: #d9716b;
+      color: white;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+    nav .logo {
+      font-weight: 600;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+    nav ul li {
+      margin-left: 1.5rem;
+    }
+    nav ul li a {
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #f4c2c2;
+    }
+
+    /* Hero Section */
+    #hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1562440499-83f55221d34b?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      text-align: center;
+      color: white;
+      padding: 0 1rem;
+      position: relative;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(217, 113, 107, 0.6);
+      z-index: 0;
+    }
+    #hero .content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+    #hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 5px #722222;
+    }
+    #hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      font-weight: 300;
+      text-shadow: 0 0 5px #721919;
+    }
+    #hero a.cta-btn {
+      background: #fff8f0;
+      color: #d9716b;
+      font-weight: 600;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+    }
+    #hero a.cta-btn:hover {
+      background: #d9716b;
+      color: white;
+    }
+
+    /* Sections */
+    section {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+    section h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-weight: 600;
+      color: #d9716b;
+      font-size: 2.5rem;
+    }
+
+    /* Gallery Section */
+    #gallery .cake-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 1.5rem;
+    }
+    #gallery .cake-card {
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    #gallery .cake-card:hover {
+      transform: scale(1.05);
+    }
+    #gallery img {
+      width: 100%;
+      display: block;
+      height: 180px;
+      object-fit: cover;
+    }
+    #gallery .cake-info {
+      padding: 1rem;
+    }
+    #gallery .cake-info h3 {
+      color: #722222;
+      margin-bottom: 0.5rem;
+    }
+    #gallery .cake-info p {
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    /* About Section */
+    #about p {
+      max-width: 650px;
+      margin: 0 auto;
+      font-weight: 300;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #5b3a3a;
+    }
+
+    /* Order Form Section */
+    #order form {
+      background: white;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 12px;
+    }
+    #order form label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      color: #722222;
+    }
+    #order form input, 
+    #order form select, 
+    #order form textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1.2rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      resize: vertical;
+    }
+    #order form button {
+      background: #d9716b;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #order form button:hover {
+      background: #a64d49;
+    }
+
+    /* Contact Section */
+    #contact {
+      text-align: center;
+      color: #722222;
+    }
+    #contact p {
+      max-width: 600px;
+      margin: 1rem auto 2rem;
+      font-weight: 300;
+      font-size: 1rem;
+    }
+    #contact a.social-link {
+      display: inline-block;
+      margin: 0 1rem;
+      font-size: 1.5rem;
+      color: #d9716b;
+    }
+    #contact iframe {
+      border: none;
+      width: 100%;
+      max-width: 600px;
+      height: 300px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      color: #bc8a85;
+      font-weight: 300;
+      font-size: 0.9rem;
+      border-top: 1px solid #f5d6d1;
+      background: #fff2ef;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav .container {
+        flex-direction: column;
+      }
+      nav ul {
+        margin-top: 0.8rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      nav ul li {
+        margin-left: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      #hero h1 {
+        font-size: 2.4rem;
+      }
+      #hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <div class="logo">Sweet Treats</div>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#gallery">Our Cakes</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#order">Order</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="content">
+      <h1>Delicious Cakes Baked With Love</h1>
+      <p>Fresh, hand-crafted cakes for every celebration in Ahilyanagar, Maharashtra</p>
+      <a href="#order" class="cta-btn">Order Now</a>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery">
+    <h2>Our Cakes</h2>
+    <div class="cake-grid">
+      <div class="cake-card" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1505253210343-c611c2e745aa?auto=format&fit=crop&w=400&q=80" alt="Chocolate Cake" />
+        <div class="cake-info">
+          <h3>Chocolate Delight</h3>
+          <p>Rich and creamy layers of chocolate cake with fudge frosting.</p>
+        </div>
+      </div>
+      <div class="cake-card" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1542206395-9feb3edaa68f?auto=format&fit=crop&w=400&q=80" alt="Strawberry Cake" />
+        <div class="cake-info">
+          <h3>Strawberry Dream</h3>
+          <p>Light sponge cake with fresh strawberries and cream topping.</p>
+        </div>
+      </div>
+      <div class="cake-card" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1605470713238-1391f14020fa?auto=format&fit=crop&w=400&q=80" alt="Red Velvet Cake" />
+        <div class="cake-info">
+          <h3>Red Velvet</h3>
+          <p>Classic red velvet cake topped with cream cheese frosting.</p>
+        </div>
+      </div>
+      <div class="cake-card" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1532634726-8b9fb998dced?auto=format&fit=crop&w=400&q=80" alt="Specialty Cake" />
+        <div class="cake-info">
+          <h3>Specialty Custom Cakes</h3>
+          <p>Custom designs made to order for your special occasion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>
+      Sweet Treats has been serving the Ahilyanagar community with fresh, hand-crafted cakes for over 10 years. 
+      Our artisan bakers use the finest ingredients and traditional recipes with a modern twist to make your celebrations extra special.
+    </p>
+  </section>
+
+  <!-- Order Section -->
+  <section id="order">
+    <h2>Order Your Cake</h2>
+    <form id="orderForm" onsubmit="return validateForm()">
+      <label for="name">Full Name <span style="color:#d9716b;">*</span></label>
+      <input type="text" id="name" name="name" required placeholder="Your name" />
+      
+      <label for="email">Email <span style="color:#d9716b;">*</span></label>
+      <input type="email" id="email" name="email" required placeholder="you@example.com" />
+      
+      <label for="phone">Phone Number <span style="color:#d9716b;">*</span></label>
+      <input type="tel" id="phone" name="phone" required placeholder="+91 1234567890" />
+      
+      <label for="cakeType">Choose Cake Type <span style="color:#d9716b;">*</span></label>
+      <select id="cakeType" name="cakeType" required>
+        <option value="">-- Select Cake --</option>
+        <option value="chocolate">Chocolate Delight</option>
+        <option value="strawberry">Strawberry Dream</option>
+        <option value="redVelvet">Red Velvet</option>
+        <option value="custom">Custom Specialty Cake</option>
+      </select>
+      
+      <label for="quantity">Quantity <span style="color:#d9716b;">*</span></label>
+      <input type="number" id="quantity" name="quantity" min="1" max="10" required value="1"/>
+      
+      <label for="date">Pick-up Date <span style="color:#d9716b;">*</span></label>
+      <input type="date" id="date" name="date" required />
+      
+      <label for="message">Additional Details</label>
+      <textarea id="message" name="message" rows="4" placeholder="Any special requests?"></textarea>
+      
+      <button type="submit">Place Order</button>
+    </form>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Visit us or give us a call in Ahilyanagar, Maharashtra</p>
+    <p><strong>Phone:</strong> +91 98765 43210<br /><strong>Email:</strong> contact@sweettreats.com</p>
+    <a href="https://www.facebook.com/sweettreatsbakery" target="_blank" class="social-link" aria-label="Facebook">&#x1F426;</a>
+    <a href="https://www.instagram.com/sweettreatsbakery" target="_blank" class="social-link" aria-label="Instagram">&#x1F4F7;</a>
+
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.651814380953!2d74.73624111431685!3d19.094231987035596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdba4a0145c5db1%3A0x1f537bd43579df0b!2sAhilyanagar!5e0!3m2!1sen!2sin!4v1694779340000!5m2!1sen!2sin" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade" 
+      title="Ahilyanagar Location"></iframe>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Sweet Treats Cake Bakery, Ahilyanagar, Maharashtra.
+  </footer>
+
+  <script>
+    // Simple form validation alert
+    function validateForm() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const cake = document.getElementById('cakeType').value;
+      const quantity = document.getElementById('quantity').value;
+      const date = document.getElementById('date').value;
+
+      if (!name || !email || !phone || !cake || quantity < 1 || !date) {
+        alert('Please fill all required fields correctly.');
+        return false;
+      }
+
+      alert(`Thank you, ${name}! Your order for ${quantity} ${cake} cake(s) has been received. We will contact you shortly.`);
+      // Normally here you’d send the form data to server or email
+      return false; // prevent actual submission in this demo
+    }
+  </script>
+
+</body>
+</html>
